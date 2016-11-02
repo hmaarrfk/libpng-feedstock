@@ -1,48 +1,52 @@
-{% set version = "1.6.24" %}
+{% set version = "1.6.26" %}
 
 package:
-    name: libpng
-    version: {{ version }}
+  name: libpng
+  version: {{ version }}
 
 source:
-    fn: libpng-{{ version }}.tar.gz
-    url: ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng16/libpng-{{ version }}.tar.gz
-    sha256: be46e0d14ccac3800f816ae860d191a1187a40164b7552c44afeee97a9caa0a3
+  fn: libpng-{{ version }}.tar.gz
+  url: ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng16/libpng-{{ version }}.tar.gz
+  sha256: 81bfc8f16ed125622c0c5ad44eeffda19e7a7c7e32f47e43c8932bf32deae7cc
 
 build:
-    number: 0
-    features:
-        - vc9  # [win and py27]
-        - vc10  # [win and py34]
-        - vc14  # [win and py35]
+  number: 0
+  features:
+    - vc9  # [win and py27]
+    - vc10  # [win and py34]
+    - vc14  # [win and py35]
 
 requirements:
-    build:
-        - python  # [win]
-        - cmake  # [win]
-        - libtool  # [not win]
-        - automake  # [not win]
-        - zlib 1.2.*
-    run:
-        - zlib 1.2.*
+  build:
+    - python  # [win]
+    - cmake  # [win]
+    - libtool  # [not win]
+    - automake  # [not win]
+    - zlib 1.2.*
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py35]
+  run:
+    - zlib 1.2.*
+    - vc 9  # [win and py27]
+    - vc 10  # [win and py34]
+    - vc 14  # [win and py35]
 
 test:
-    requires:
-        - python {{ environ['PY_VER'] + '*' }}  # [win]
-    commands:
-        - test -f ${PREFIX}/lib/libpng.a  # [not win]
-        - test -f ${PREFIX}/lib/libpng.so  # [linux]
-        - test -f ${PREFIX}/lib/libpng.dylib  # [osx]
-        - libpng-config --version  # [not win]
-        - conda inspect linkages -n _test libpng  # [not win]
-        - conda inspect objects -n _test libpng  # [osx]
+  commands:
+    - test -f ${PREFIX}/lib/libpng.a  # [not win]
+    - test -f ${PREFIX}/lib/libpng.so  # [linux]
+    - test -f ${PREFIX}/lib/libpng.dylib  # [osx]
+    - libpng-config --version  # [not win]
+    #- conda inspect linkages -p $PREFIX libpng  # [not win]
+    #- conda inspect objects -p $PREFIX libpng  # [osx]
 
 about:
-    home: http://www.libpng.org/pub/png/libpng.html
-    license: Zlib
-    summary: PNG reference library
-    license_file: libpng-LICENSE.txt
+  home: http://www.libpng.org/pub/png/libpng.html
+  license: zlib/libpng
+  summary: 'PNG reference library.'
+  license_file: LICENSE
 
 extra:
-    recipe-maintainers:
-        - ocefpaf
+  recipe-maintainers:
+    - ocefpaf
