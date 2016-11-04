@@ -28,5 +28,3 @@ if errorlevel 1 exit 1
 
 copy %LIBRARY_LIB%\libpng16_static.lib %LIBRARY_LIB%\libpng_static.lib
 if errorlevel 1 exit 1
-
-copy %RECIPE_DIR%\libpng-LICENSE.txt %SRC_DIR%\libpng-LICENSE.txt
