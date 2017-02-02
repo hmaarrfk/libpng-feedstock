@@ -11,10 +11,11 @@ source:
 
 build:
   number: 0
+  skip: True  # [win and [py>35]
   features:
     - vc9  # [win and py27]
     - vc10  # [win and py34]
-    - vc14  # [win and py35]
+    - vc14  # [win and py>=35]
 
 requirements:
   build:
@@ -25,12 +26,12 @@ requirements:
     - zlib 1.2.*
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
+    - vc 14  # [win and py>=35]
   run:
     - zlib 1.2.*
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
+    - vc 14  # [win and py>=35]
 
 test:
   commands:
@@ -38,8 +39,8 @@ test:
     - test -f ${PREFIX}/lib/libpng.so  # [linux]
     - test -f ${PREFIX}/lib/libpng.dylib  # [osx]
     - libpng-config --version  # [not win]
-    #- conda inspect linkages -p $PREFIX libpng  # [not win]
-    #- conda inspect objects -p $PREFIX libpng  # [osx]
+    - conda inspect linkages -p $PREFIX libpng  # [not win]
+    - conda inspect objects -p $PREFIX libpng  # [osx]
 
 about:
   home: http://www.libpng.org/pub/png/libpng.html
