@@ -10,12 +10,12 @@ source:
   md5: 897ccec1ebfb0922e83c2bfaa1be8748
 
 build:
-  number: 0
-  skip: True  # [win and [py>35]
+  number: 1
+  skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
     - vc10  # [win and py34]
-    - vc14  # [win and py>=35]
+    - vc14  # [win and (py35 or py36)]
 
 requirements:
   build:
@@ -23,15 +23,15 @@ requirements:
     - cmake  # [win]
     - libtool  # [not win]
     - automake  # [not win]
-    - zlib 1.2.*
+    - zlib 1.2.8
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
+    - vc 14  # [win and (py35 or py36)]
   run:
-    - zlib 1.2.*
+    - zlib 1.2.8
     - vc 9  # [win and py27]
     - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
+    - vc 14  # [win and (py35 or py36)]
 
 test:
   commands:
