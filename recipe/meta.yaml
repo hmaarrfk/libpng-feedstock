@@ -5,16 +5,14 @@ package:
   version: {{ version }}
 
 source:
-  fn: libpng-{{ version }}.tar.gz
   url: http://download.sourceforge.net/libpng/libpng-{{ version }}.tar.gz
-  md5: 897ccec1ebfb0922e83c2bfaa1be8748
+  sha256: b6cec903e74e9fdd7b5bbcde0ab2415dd12f2f9e84d9e4d9ddd2ba26a41623b2
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
-    - vc10  # [win and py34]
     - vc14  # [win and (py35 or py36)]
 
 requirements:
@@ -23,14 +21,12 @@ requirements:
     - cmake  # [win]
     - libtool  # [not win]
     - automake  # [not win]
-    - zlib 1.2.8
+    - zlib 1.2.11
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
     - vc 14  # [win and (py35 or py36)]
   run:
-    - zlib 1.2.8
+    - zlib 1.2.11
     - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
     - vc 14  # [win and (py35 or py36)]
 
 test:
@@ -39,8 +35,8 @@ test:
     - test -f ${PREFIX}/lib/libpng.so  # [linux]
     - test -f ${PREFIX}/lib/libpng.dylib  # [osx]
     - libpng-config --version  # [not win]
-    - conda inspect linkages -p $PREFIX libpng  # [not win]
-    - conda inspect objects -p $PREFIX libpng  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://www.libpng.org/pub/png/libpng.html
