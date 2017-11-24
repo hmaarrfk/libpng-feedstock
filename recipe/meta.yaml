@@ -1,4 +1,4 @@
-{% set version = "1.6.28" %}
+{% set version = "1.6.34" %}
 
 package:
   name: libpng
@@ -6,10 +6,10 @@ package:
 
 source:
   url: http://download.sourceforge.net/libpng/libpng-{{ version }}.tar.gz
-  sha256: b6cec903e74e9fdd7b5bbcde0ab2415dd12f2f9e84d9e4d9ddd2ba26a41623b2
+  sha256: 574623a4901a9969080ab4a2df9437026c8a87150dfd5c235e28c94b212964a7
 
 build:
-  number: 2
+  number: 0
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
