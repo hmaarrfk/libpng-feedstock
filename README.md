@@ -7,21 +7,25 @@ Package license: zlib/libpng
 
 Feedstock license: BSD 3-Clause
 
-Summary: PNG reference library.
+Summary: PNG reference library
 
+libpng is the official PNG reference library. It supports almost all PNG
+features, is extensible, and has been extensively tested for over 20 years.
 
 
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/libpng-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/libpng-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/libpng-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/libpng-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/libpng-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/libpng-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/libpng-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/libpng-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/libpng-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/libpng-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/libpng-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/libpng-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/libpng/badges/version.svg)](https://anaconda.org/conda-forge/libpng)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/libpng/badges/downloads.svg)](https://anaconda.org/conda-forge/libpng)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libpng-green.svg)](https://anaconda.org/conda-forge/libpng) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libpng.svg)](https://anaconda.org/conda-forge/libpng) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libpng.svg)](https://anaconda.org/conda-forge/libpng) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libpng.svg)](https://anaconda.org/conda-forge/libpng) |
 
 Installing libpng
 =================
