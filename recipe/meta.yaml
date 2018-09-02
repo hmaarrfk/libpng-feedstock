@@ -1,4 +1,4 @@
-{% set version = "1.6.35" %}
+{% set version = "1.6.34" %}
 
 package:
   name: libpng
@@ -6,10 +6,10 @@ package:
 
 source:
   url: http://download.sourceforge.net/libpng/libpng-{{ version }}.tar.gz
-  sha256: 2b82ab3e996803b80bc73206857e826a155d3ebb374e8eb03a87a63c6f672cf7
+  sha256: 574623a4901a9969080ab4a2df9437026c8a87150dfd5c235e28c94b212964a7
 
 build:
-  number: 0
+  number: 2
   run_exports:
     # SO name changes at minor rev bumps.
     - {{ pin_subpackage('libpng', max_pin='x.x') }}
