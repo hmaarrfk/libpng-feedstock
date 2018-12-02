@@ -9,30 +9,21 @@ With relocatable packages, pkg-config is definitely useful on Windows too.
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 4db9bb8..9ddf786 100644
+index 73044c9..fdd302a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -826,7 +826,7 @@ endif(NOT DEFINED CMAKE_INSTALL_LIBDIR)
- # we use the same files like ./configure, so we have to set its vars
+@@ -820,7 +820,7 @@ endif()
+ # We use the same files like ./configure, so we have to set its vars.
  # Only do this on Windows for Cygwin - the files don't make much sense outside
- # a UNIX look alike
+ # of a UNIX look-alike.
 -if(NOT WIN32 OR CYGWIN OR MINGW)
 +if(1)
    set(prefix      ${CMAKE_INSTALL_PREFIX})
    set(exec_prefix ${CMAKE_INSTALL_PREFIX})
-   set(libdir      ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
-@@ -839,7 +839,7 @@ if(NOT WIN32 OR CYGWIN OR MINGW)
-   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libpng-config.in
-     ${CMAKE_CURRENT_BINARY_DIR}/${PNGLIB_NAME}-config @ONLY)
-   CREATE_SYMLINK(libpng-config FILE ${PNGLIB_NAME}-config)
--endif(NOT WIN32 OR CYGWIN OR MINGW)
-+endif()
- 
- # SET UP LINKS
- if(PNG_SHARED)
-@@ -914,13 +914,13 @@ if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL )
-   install(FILES libpng.3 libpngpf.3      DESTINATION ${PNG_MAN_DIR}/man3)
-   install(FILES png.5                    DESTINATION ${PNG_MAN_DIR}/man5)
+   set(libdir      ${CMAKE_INSTALL_FULL_LIBDIR})
+@@ -901,13 +901,13 @@ if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL)
+   install(FILES libpng.3 libpngpf.3 DESTINATION ${PNG_MAN_DIR}/man3)
+   install(FILES png.5 DESTINATION ${PNG_MAN_DIR}/man5)
    # Install pkg-config files
 +  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libpng.pc
 +          DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
@@ -47,7 +38,7 @@ index 4db9bb8..9ddf786 100644
 -            DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
      install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${PNGLIB_NAME}-config
              DESTINATION bin)
-   endif(NOT CMAKE_HOST_WIN32 OR CYGWIN OR MINGW)
+   endif()
 -- 
 2.17.1
 
