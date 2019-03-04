@@ -9,6 +9,7 @@ source:
   sha256: ca13c548bde5fb6ff7117cc0bdab38808acb699c0eccb613f0e4697826e1fd7d
   patches:
     - 0001-Include-pkg-config-files-in-the-Windows-packages-too.patch
+    - libpng-arm-free.patch  # [aarch64]
 
 build:
   number: 1000
@@ -18,6 +19,7 @@ build:
 
 requirements:
   build:
+    - make  # [unix]
     - cmake  # [win]
     - m2-patch  # [win]
     - libtool  # [not win]
