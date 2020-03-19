@@ -12,7 +12,8 @@ source:
     - libpng-arm-free.patch  # [aarch64]
 
 build:
-  number: 0
+  number: 1
+  skip: true  # [win and vc<14]
   run_exports:
     # SO name changes at minor rev bumps.
     - {{ pin_subpackage('libpng', max_pin='x.x') }}
@@ -22,6 +23,7 @@ requirements:
     - make  # [unix]
     - cmake  # [win]
     - m2-patch  # [win]
+    - ninja  # [win]
     - libtool  # [not win]
     - automake  # [not win]
     - {{ compiler('c') }}
