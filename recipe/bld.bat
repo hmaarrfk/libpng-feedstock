@@ -22,5 +22,10 @@ if errorlevel 1 exit 1
 copy %LIBRARY_LIB%\libpng16.lib %LIBRARY_LIB%\libpng.lib
 if errorlevel 1 exit 1
 
+:: Make copies of the .lib files without the embedded version number.
+copy %LIBRARY_BIN%\libpng16.dll %LIBRARY_LIB%\libpng.dll
+if errorlevel 1 exit 1
+
 copy %LIBRARY_LIB%\libpng16_static.lib %LIBRARY_LIB%\libpng_static.lib
 if errorlevel 1 exit 1
+
