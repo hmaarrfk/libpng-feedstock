@@ -24,3 +24,11 @@ if errorlevel 1 exit 1
 
 copy %LIBRARY_LIB%\libpng16_static.lib %LIBRARY_LIB%\libpng_static.lib
 if errorlevel 1 exit 1
+
+:: Make copies of the .lib files without the 'lib' prefix.
+copy %LIBRARY_LIB%\libpng16.lib %LIBRARY_LIB%\png16.lib
+if errorlevel 1 exit 1
+
+copy %LIBRARY_LIB%\libpng16_static.lib %LIBRARY_LIB%\png16_static.lib
+if errorlevel 1 exit 1
+
