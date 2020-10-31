@@ -26,6 +26,7 @@ requirements:
     - ninja  # [win]
     - libtool  # [not win]
     - automake  # [not win]
+    - libtool  # [unix]
     - {{ compiler('c') }}
   host:
     - zlib
