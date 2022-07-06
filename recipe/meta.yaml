@@ -9,10 +9,11 @@ source:
   sha256: daeb2620d829575513e35fecc83f0d3791a620b9b93d800b763542ece9390fb4
   patches:
     - 0001-Include-pkg-config-files-in-the-Windows-packages-too.patch
+    - 0002-Ensure-that-lm-is-not-included-in-Windows-pkg-config.patch
     - libpng-arm-free.patch  # [aarch64]
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win and vc<14]
   run_exports:
     # SO name changes at minor rev bumps.
