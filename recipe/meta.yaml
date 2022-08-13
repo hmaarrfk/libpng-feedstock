@@ -13,7 +13,7 @@ source:
     - libpng-arm-free.patch  # [aarch64]
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win and vc<14]
   run_exports:
     # SO name changes at minor rev bumps.
@@ -31,8 +31,6 @@ requirements:
     - {{ compiler('c') }}
   host:
     - zlib
-  run:
-    - zlib
 
 test:
   commands:
@@ -42,7 +40,7 @@ test:
 
 about:
   home: http://www.libpng.org/pub/png/libpng.html
-  license: zlib/libpng
+  license: zlib-acknowledgement
   license_file: LICENSE
   license_url: http://www.libpng.org/pub/png/src/libpng-LICENSE.txt
   summary: 'PNG reference library'
