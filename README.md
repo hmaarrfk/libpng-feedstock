@@ -3,7 +3,7 @@ About libpng
 
 Home: http://www.libpng.org/pub/png/libpng.html
 
-Package license: [zlib/libpng](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt)
+Package license: [zlib-acknowledgement](http://www.libpng.org/pub/png/src/libpng-LICENSE.txt)
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libpng-feedstock/blob/main/LICENSE.txt)
 
