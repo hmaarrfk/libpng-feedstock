@@ -1,4 +1,4 @@
-{% set version = "1.6.38" %}
+{% set version = "1.6.39" %}
 
 package:
   name: libpng
@@ -6,7 +6,7 @@ package:
 
 source:
   url: http://download.sourceforge.net/libpng/libpng-{{ version }}.tar.gz
-  sha256: e2b5e1b4329650992c041996cf1269681b341191dc07ffed816c555769cceb77
+  sha256: af4fb7f260f839919e5958e5ab01a275d4fe436d45442a36ee62f73e5beb75ba
   patches:
     - 0001-Include-pkg-config-files-in-the-Windows-packages-too.patch
     - 0002-Ensure-that-lm-is-not-included-in-Windows-pkg-config.patch
