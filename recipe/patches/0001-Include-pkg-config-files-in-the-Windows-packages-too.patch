@@ -15,7 +15,7 @@
    # Install the pkg-config files.
 +  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libpng.pc
 +          DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
-+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PNGLIB_NAME}.pc
++  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libpng${PNGLIB_ABI_VERSION}.pc
 +          DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
    if(NOT CMAKE_HOST_WIN32 OR CYGWIN OR MINGW)
 -    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libpng.pc
