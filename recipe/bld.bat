@@ -1,3 +1,5 @@
+@echo on
+
 mkdir build-%SUBDIR%-%c_compiler%
 cd build-%SUBDIR%-%c_compiler%
 
@@ -16,7 +18,7 @@ if errorlevel 1 exit /b 1
 
 :: Test.
 :: TODO: check if there exists a emulator
-if not %CONDA_BUILD_SKIP_TESTS%==1 (
+if not "%CONDA_BUILD_SKIP_TESTS%"=="1" (
 if not "%CONDA_BUILD_CROSS_COMPILATION%" == "1" (
 ctest -C Release
 if errorlevel 1 exit 1
