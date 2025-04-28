@@ -41,7 +41,16 @@ requirements:
 tests:
   - package_contents:
       lib:
-        - png
+        - if: win
+          then: png${{ short_version }}
+          else: png
+      include:
+        - libpng${{ short_version }}/png.h
+        - libpng${{ short_version }}/pngconf.h
+        - libpng${{ short_version }}/pnglibconf.h
+        - png.h
+        - pngconf.h
+        - pnglibconf.h
   - script:
       - if: not win
         then: libpng-config --version
