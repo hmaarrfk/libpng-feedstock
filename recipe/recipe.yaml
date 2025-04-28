@@ -42,7 +42,7 @@ tests:
   - package_contents:
       lib:
         - if: win
-          then: png${{ short_version }}
+          then: libpng${{ short_version }}
           else: png
       include:
         - libpng${{ short_version }}/png.h
