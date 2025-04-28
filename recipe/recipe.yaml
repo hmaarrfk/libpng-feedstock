@@ -2,13 +2,14 @@ schema_version: 1
 
 context:
   version: 1.6.47
+  short_version: ${{ (version|split('.'))[0:2]|join }}
 
 package:
   name: libpng
   version: ${{ version }}
 
 source:
-  url: http://download.sourceforge.net/libpng/libpng-${{ version }}.tar.gz
+  url: https://downloads.sourceforge.net/project/libpng/libpng${{ short_version }}/${{ version }}/libpng-${{ version }}.tar.gz
   sha256: 084115c62fe023e3d88cd78764a4d8e89763985ee4b4a085825f7a00d85eafbb
   patches:
     - patches/0001-Include-pkg-config-files-in-the-Windows-packages-too.patch
@@ -16,37 +17,32 @@ source:
 
 build:
   number: 1
-  skip: win and vc<14
+  skip: 
+  - win and vc<14
 
 requirements:
   build:
-    - if: unix
-      then: make
-    - if: win
-      then: cmake
-    - if: win
-      then: m2-patch
-    - if: win
-      then: ninja
-    - if: not win
-      then: libtool
-    - if: not win
-      then: automake
-    - if: unix
-      then: libtool
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
+    - if: win
+      then:
+        - cmake
+        - ninja
+    - if: unix
+      then:
+        - make
+        - libtool
+        - automake
   host:
     - zlib
   run_exports:
     - ${{ pin_subpackage('libpng', upper_bound='x.x') }}
 
 tests:
+  - package_contents:
+      lib:
+        - png
   - script:
-      - if: not win
-        then: test -f ${PREFIX}/lib/libpng.a
-      - if: not win
-        then: test -f ${PREFIX}/lib/libpng${SHLIB_EXT}
       - if: not win
         then: libpng-config --version
 
@@ -67,3 +63,4 @@ extra:
     - ocefpaf
     - msarahan
     - pkgw
+    - baszalmstra
