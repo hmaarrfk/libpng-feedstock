@@ -17,6 +17,7 @@ source:
     # Patch shared for comments upstream
     # https://github.com/pnggroup/libpng/issues/205#issuecomment-3477109556
     - patches/0003-Use-zlib-ng-instead-of-zlib.patch
+    - patches/0004_one_more.patch
 
 build:
   number: 2
