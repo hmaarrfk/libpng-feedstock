@@ -1,0 +1,70 @@
+{% set version = "1.6.50" %}
+{% set short_version = "1.6" %}
+{% set sha256 = "708f4398f996325819936d447f982e0db90b6b8212b7507e7672ea232210949a" %}
+
+package:
+  name: libpng
+  version: {{ version }}
+
+source:
+  url: https://downloads.sourceforge.net/project/libpng/libpng{{ short_version }}/{{ version }}/libpng-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+  patches:
+    - patches/0001-Include-pkg-config-files-in-the-Windows-packages-too.patch
+    - patches/0002-Ensure-that-lm-is-not-included-in-Windows-pkg-config.patch
+
+build:
+  number: 1
+  skip: true  # [win and vc<14]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - cmake  # [win]
+    - ninja  # [win]
+    - make  # [unix]
+    - libtool  # [unix]
+    - automake  # [unix]
+  host:
+    - zlib-ng
+  run_exports:
+    - {{ pin_subpackage('libpng', max_pin='x.x') }}
+
+test:
+  commands:
+    - test -f $PREFIX/include/libpng{{ short_version }}/png.h  # [unix]
+    - test -f $PREFIX/include/libpng{{ short_version }}/pngconf.h  # [unix]
+    - test -f $PREFIX/include/libpng{{ short_version }}/pnglibconf.h  # [unix]
+    - test -f $PREFIX/include/png.h  # [unix]
+    - test -f $PREFIX/include/pngconf.h  # [unix]
+    - test -f $PREFIX/include/pnglibconf.h  # [unix]
+    - test -f $PREFIX/lib/libpng{{ short_version }}.so  # [linux]
+    - test -f $PREFIX/lib/libpng{{ short_version }}.dylib  # [osx]
+    - test -f $PREFIX/lib/libpng{{ short_version }}.a  # [unix]
+    - if exist %PREFIX%\\Library\\include\\libpng{{ short_version }}\\png.h exit 0  # [win]
+    - if exist %PREFIX%\\Library\\include\\libpng{{ short_version }}\\pngconf.h exit 0  # [win]
+    - if exist %PREFIX%\\Library\\include\\libpng{{ short_version }}\\pnglibconf.h exit 0  # [win]
+    - if exist %PREFIX%\\Library\\include\\png.h exit 0  # [win]
+    - if exist %PREFIX%\\Library\\include\\pngconf.h exit 0  # [win]
+    - if exist %PREFIX%\\Library\\include\\pnglibconf.h exit 0  # [win]
+    - if exist %PREFIX%\\Library\\lib\\libpng{{ short_version }}.lib exit 0  # [win]
+    - libpng-config --version  # [unix]
+
+about:
+  license: zlib-acknowledgement
+  license_file: LICENSE
+  summary: PNG reference library
+  description: |
+    libpng is the official PNG reference library. It supports almost all PNG
+    features, is extensible, and has been extensively tested for over 20 years.
+  homepage: http://www.libpng.org/pub/png/libpng.html
+  repository: https://sourceforge.net/p/libpng/code/ci/libpng16/tree/
+  doc_url: http://www.libpng.org/pub/png/libpng.html
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
+    - msarahan
+    - pkgw
+    - baszalmstra
+
